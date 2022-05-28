@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Task Grocery</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="sign_in">Sign In</string>
+    <string name="image_description">Image Description</string>
+    <string name="enter_username">Username</string>
+    <string name="enter_password">Password</string>
+    <string name="added_to_cart_count">1</string>
+    <string name="dummy_text">Dummy Text</string>
+    <string name="add_to_cart">Add To Cart</string>
+    <string name="item_price">PKR 250  (5 kg)</string>
+    <string name="organic_potatoes">Organic Potatoes</string>
+</resources>
