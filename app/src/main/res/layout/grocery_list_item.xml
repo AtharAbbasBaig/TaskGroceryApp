@@ -1,74 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/itemOne"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <data>
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="10dp"
-            android:contentDescription="@string/image_description"
-            android:src="@drawable/user_avatar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/containerAddToCart2"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_margin="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/containerItem"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnItemOn"
+            <TextView
+                android:id="@+id/tvDiscount"
                 style="@style/TextAppearance.AppCompat.Small"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/cart_button_background"
-                android:text="@string/add_to_cart"
-                android:textAllCaps="false"
+                android:layout_marginEnd="28dp"
+                android:background="@drawable/textview_circular_background"
+                android:gravity="center"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text="@string/added_to_cart_count"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/itemImage"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/image_description"
+                android:src="@drawable/image_placeholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerAddToCart"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_margin="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itemImage">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/itemButtonAddToCart"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/cart_button_background"
+                    android:text="@string/add_to_cart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerCartAddRemover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/btnAddToCartPlus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/imageview_circular_background"
+                        android:contentDescription="@string/image_description"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_remove"
+                        android:text="@string/added_to_cart_count"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tvItemCartCount"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvItemCartCount"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/added_to_cart_count"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnAddToCartPlus"
+                        app:layout_constraintEnd_toStartOf="@+id/btnAddToCartRemove"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btnAddToCartPlus"
+                        app:layout_constraintTop_toTopOf="@+id/btnAddToCartPlus" />
+
+                    <ImageView
+                        android:id="@+id/btnAddToCartRemove"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/imageview_circular_background"
+                        android:contentDescription="@string/image_description"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_add"
+                        android:text="@string/added_to_cart_count"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvItemCartCount"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/tvItemCartCount"
+                        app:layout_constraintTop_toTopOf="@+id/tvItemCartCount" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tvItemPriceDetails"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:text="@string/item_price"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:visibility="visible" />
+                app:layout_constraintStart_toStartOf="@+id/containerAddToCart"
+                app:layout_constraintTop_toBottomOf="@+id/containerAddToCart" />
+
+            <TextView
+                android:id="@+id/tvItemName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:text="@string/organic_potatoes"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/containerAddToCart"
+                app:layout_constraintTop_toBottomOf="@+id/tvItemPriceDetails" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/tvItemOne"
-            style="@style/TextAppearance.AppCompat.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/item_price"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/containerAddToCart2"
-            app:layout_constraintTop_toBottomOf="@+id/containerAddToCart2" />
-
-        <TextView
-            android:id="@+id/tvItemOneName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/organic_potatoes"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/tvItemOne"
-            app:layout_constraintTop_toBottomOf="@+id/tvItemOne" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
