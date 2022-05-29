@@ -10,7 +10,7 @@ import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import java.util.concurrent.TimeUnit
 
-class PhoneNoVerification(private val activity: Activity, private val context: Context) {
+class PhoneNumberVerificationHandler(private val activity: Activity) {
 
     private val firebaseAuth = FirebaseAuth.getInstance()
     private var mVerificationId: String = ""
@@ -22,8 +22,6 @@ class PhoneNoVerification(private val activity: Activity, private val context: C
             val code = credential.smsCode
             if (code != null)
                 signInWithPhoneAuthCredential(credential)
-            else
-                context
         }
 
         override fun onVerificationFailed(e: FirebaseException) {
@@ -66,17 +64,14 @@ class PhoneNoVerification(private val activity: Activity, private val context: C
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     val user = task.result?.user
-                    Intent(context, MainActivity::class.java).apply {
-                        context.startActivity(this)
+                    Intent(activity, MainActivity::class.java).apply {
+                        activity.startActivity(this)
                     }
 
                 } else {
                     // Sign in failed, display a message and update the UI
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        Toast.makeText(context, task.exception.toString(), Toast.LENGTH_SHORT)
-                            .show()
                     }
-                    Toast.makeText(context, "Authentication Failed!", Toast.LENGTH_SHORT).show()
                 }
             }
     }

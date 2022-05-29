@@ -1,8 +1,8 @@
 package com.baig.taskgrocery.listeners
 
-import com.baig.taskgrocery.databinding.GroceryListItemBinding
+import android.view.View
 import com.baig.taskgrocery.models.Products
 
 interface ItemClickHandler {
-    fun onItemClick(product: Products, binding: GroceryListItemBinding)
+    fun onItemClick(product: Products, root: View)
 }

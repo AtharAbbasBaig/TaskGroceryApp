@@ -5,20 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.baig.taskgrocery.R
 import com.baig.taskgrocery.databinding.ActivityOtpverificationBinding
-import com.baig.taskgrocery.firebase.PhoneNoVerification
+import com.baig.taskgrocery.firebase.PhoneNumberVerificationHandler
 import com.baig.taskgrocery.ui.activities.UserSignInActivity.Companion.PHONE_NO
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthProvider
 
-class OTPVerificationActivity : AppCompatActivity() {
+class PhoneNumberVerificationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOtpverificationBinding
-    private lateinit var phoneNoVerification: PhoneNoVerification
+    private lateinit var phoneNumberVerificationHandler: PhoneNumberVerificationHandler
     private lateinit var firebaseAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_otpverification)
-        phoneNoVerification = PhoneNoVerification(this, this)
+        phoneNumberVerificationHandler = PhoneNumberVerificationHandler(this)
         firebaseAuth = FirebaseAuth.getInstance()
 
         sendUserVerificationCode()
@@ -27,7 +27,7 @@ class OTPVerificationActivity : AppCompatActivity() {
 
     private fun sendUserVerificationCode() {
         val phoneNo = intent.getStringExtra(PHONE_NO) ?: return
-        phoneNoVerification.sendVerificationCode(phoneNo)
+        phoneNumberVerificationHandler.sendVerificationCode(phoneNo)
     }
 
     private fun clickToVerify() {
@@ -42,10 +42,10 @@ class OTPVerificationActivity : AppCompatActivity() {
     private fun verifyCode(userCode: String?) {
         if (userCode != null) {
             val credentials = PhoneAuthProvider.getCredential(
-                phoneNoVerification.getVerificationId(),
+                phoneNumberVerificationHandler.getVerificationId(),
                 userCode
             )
-            phoneNoVerification.signInWithPhoneAuthCredential(credentials)
+            phoneNumberVerificationHandler.signInWithPhoneAuthCredential(credentials)
         }
     }
 }

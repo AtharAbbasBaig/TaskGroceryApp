@@ -33,32 +33,47 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvAddToCartCount"
-                style="@style/TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/textview_circular_background"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
-                android:text="@string/added_to_cart_count"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/btnAddToCart"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="-8dp"
-                android:background="@drawable/imageview_circular_background"
-                android:contentDescription="@string/image_description"
-                android:padding="6dp"
-                android:src="@drawable/ic_shopping_cart"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cartIconContainer"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 app:layout_constraintBottom_toBottomOf="@+id/drawerMain"
-                app:layout_constraintEnd_toStartOf="@id/tvAddToCartCount"
-                app:layout_constraintTop_toTopOf="@+id/drawerMain"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/drawerMain">
+
+                <TextView
+                    android:id="@+id/tvAddToCartCount"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/textview_circular_background"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/added_to_cart_count"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btnAddToCart"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="-18dp"
+                    android:background="@drawable/imageview_circular_background"
+                    android:contentDescription="@string/image_description"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_shopping_cart"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tvAddToCartCount"
+                    app:layout_constraintHorizontal_bias="0.25"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

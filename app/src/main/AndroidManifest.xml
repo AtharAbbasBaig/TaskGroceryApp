@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TaskGrocery">
         <activity
-            android:name=".ui.activities.OTPVerificationActivity"
+            android:name=".ui.activities.PhoneNumberVerificationActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.UserSignInActivity"

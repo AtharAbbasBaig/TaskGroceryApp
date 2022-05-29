@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.baig.taskgrocery.R
 import com.baig.taskgrocery.databinding.ActivityUserSignInBinding
-import com.baig.taskgrocery.firebase.PhoneNoVerification
 
 class UserSignInActivity : AppCompatActivity() {
 
@@ -15,14 +14,14 @@ class UserSignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_user_sign_in)
 
-        navigateToOTPActivity()
+        navigateToPhoneNumberActivity()
     }
 
-    private fun navigateToOTPActivity() {
+    private fun navigateToPhoneNumberActivity() {
         binding.apply {
             btnSignIn.setOnClickListener {
                 val phoneNumber = binding.editTextUserPhoneNo.text.toString()
-                Intent(this@UserSignInActivity, OTPVerificationActivity::class.java).apply {
+                Intent(this@UserSignInActivity, PhoneNumberVerificationActivity::class.java).apply {
                     putExtra(PHONE_NO, phoneNumber)
                     startActivity(this)
                 }

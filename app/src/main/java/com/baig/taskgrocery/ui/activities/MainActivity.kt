@@ -1,6 +1,7 @@
 package com.baig.taskgrocery.ui.activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
@@ -9,20 +10,21 @@ import com.baig.taskgrocery.R
 import com.baig.taskgrocery.adapters.ListOneAdapter
 import com.baig.taskgrocery.adapters.ListTwoAdapter
 import com.baig.taskgrocery.databinding.ActivityMainBinding
-import com.baig.taskgrocery.databinding.GroceryListItemBinding
 import com.baig.taskgrocery.listeners.ItemClickHandler
 import com.baig.taskgrocery.models.Banners
 import com.baig.taskgrocery.models.GroceryData
 import com.baig.taskgrocery.models.Products
 import com.baig.taskgrocery.network.MyApi
+import com.baig.taskgrocery.utils.PrefUtil
+import com.baig.taskgrocery.utils.visible
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.grocery_list_item.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
 
 class MainActivity : AppCompatActivity(), ItemClickHandler {
 
@@ -30,9 +32,11 @@ class MainActivity : AppCompatActivity(), ItemClickHandler {
     private var bannerList: List<Banners> = ArrayList()
     private var productList: List<Products> = ArrayList()
     private var cartItemCounter: Int = 0
+    private lateinit var prefUtil: PrefUtil
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        prefUtil = PrefUtil(this)
 
         loadWithCoroutines()
     }
@@ -53,9 +57,17 @@ class MainActivity : AppCompatActivity(), ItemClickHandler {
                     setUpPosterHeader()
                     setUpRecyclerViewOne()
                     setUpRecyclerViewTwo()
+                    getCartCount()
                 }
             }
         }
+    }
+
+    private fun getCartCount() {
+        cartItemCounter = prefUtil.getInt(CART_COUNT, 0)
+        if (cartItemCounter > 0)
+            binding.tvAddToCartCount.visible(true)
+        binding.tvAddToCartCount.text = cartItemCounter.toString()
     }
 
     private fun setUpRecyclerViewOne() {
@@ -111,7 +123,47 @@ class MainActivity : AppCompatActivity(), ItemClickHandler {
         return productList
     }
 
-    override fun onItemClick(product: Products, binding: GroceryListItemBinding) {
+    private fun setCartItemCount() {
+        if (cartItemCounter > 0) {
+            binding.tvAddToCartCount.visible(true)
+            binding.tvAddToCartCount.text = cartItemCounter.toString()
+        } else {
+            binding.tvAddToCartCount.visible(false)
+        }
+        prefUtil.setInt(CART_COUNT, cartItemCounter)
+    }
 
+    override fun onItemClick(product: Products, root: View) {
+        val maxLimit = 5
+        var initialCount = prefUtil.getInt(product.id.toString(), 0)
+        root.tvItemCartCount.text = initialCount.toString()
+        root.btnAddToCartPlus.setOnClickListener {
+            if (initialCount < maxLimit) {
+                ++cartItemCounter
+                ++initialCount
+                prefUtil.setInt(product.id.toString(), initialCount)
+                setCartItemCount()
+                root.tvItemCartCount.text = initialCount.toString()
+            } else {
+                root.btnAddToCartPlus.isClickable = false
+                root.btnAddToCartMinus.isClickable = true
+            }
+        }
+        root.btnAddToCartMinus.setOnClickListener {
+            if (initialCount > 0) {
+                --cartItemCounter
+                --initialCount
+                prefUtil.setInt(product.id.toString(), initialCount)
+                setCartItemCount()
+                root.tvItemCartCount.text = initialCount.toString()
+            } else {
+                root.btnAddToCartPlus.isClickable = true
+                root.btnAddToCartMinus.isClickable = false
+            }
+        }
+    }
+
+    companion object {
+        const val CART_COUNT = "cart_count"
     }
 }

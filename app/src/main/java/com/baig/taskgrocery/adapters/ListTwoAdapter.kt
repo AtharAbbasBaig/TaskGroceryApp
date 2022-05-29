@@ -43,6 +43,7 @@ class ListTwoAdapter(
         fun bindItems(product: Products) = with(binding) {
             itemImage.loadImage(product.imageUrl!!)
             if (product.discount != null) {
+                tvDiscount.visible(true)
                 "${product.discount}\noff".also { tvDiscount.text = it }
             } else {
                 tvDiscount.visible(false)
@@ -54,7 +55,7 @@ class ListTwoAdapter(
                 itemButtonAddToCart.setOnClickListener {
                     itemButtonAddToCart.visible(false)
                     containerCartAddRemover.visible(true)
-                    itemClickHandler.onItemClick(product, binding)
+                    itemClickHandler.onItemClick(product, binding.root)
                 }
             } else {
                 "Out Of Stock".also { itemButtonAddToCart.text = it }

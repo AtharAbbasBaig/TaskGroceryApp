@@ -15,7 +15,7 @@
          "label":"Nescafe 2in1 Stick - 11.7g",
          "description":"11.7g",
          "imageUrl":"https://storage.googleapis.com/eddress/market-products/merchants/jHn1l1rmHanY3l/5d1b28e3bcfeb67540d17541.png?v=3",
-         "outOfStock":false,
+         "outOfStock":true,
          "price":425.0,
          "weight":1.0,
          "discount":"3%"
@@ -25,7 +25,7 @@
          "label":"Ariel Power Gel Liquid Detergent - 3L",
          "description":"",
          "imageUrl":"https://storage.googleapis.com/eddress/market-products/merchants/jHn1l1rmHanY3l/5d00ee1fbcfeb675402a471f.png?v=9",
-         "weight":1.0,
+         "weight":3.0,
          "outOfStock":false,
          "price":39990.0,
          "discount":"5%"
@@ -35,7 +35,7 @@
          "label":"Nescafe Gold Unsweetened Cappuccino Stick - 14.2g",
          "description":"",
          "imageUrl":"https://storage.googleapis.com/eddress/market-products/merchants/jHn1l1rmHanY3l/5d1b28e3bcfeb67540d17543.png?v=2",
-         "weight":1.0,
+         "weight":2.0,
          "outOfStock":false,
          "price":1290.0
       },
@@ -45,7 +45,7 @@
          "description":"",
          "imageUrl":"https://storage.googleapis.com/eddress/market-products/merchants/jHn1l1rmHanY3l/5e46a204acb65451c0425902.png?v=7",
          "weight":1.0,
-         "outOfStock":false,
+         "outOfStock":true,
          "price":9290.0
       }
    ]

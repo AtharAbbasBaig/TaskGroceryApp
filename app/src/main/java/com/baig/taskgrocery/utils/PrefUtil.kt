@@ -2,9 +2,7 @@ package com.baig.taskgrocery.utils
 
 import android.content.Context
 
-class PrefUtil {
-
-    private val context: Context? = null
+class PrefUtil(private val context: Context?) {
 
     val PREFS_NAME = "my_prefs"
 
