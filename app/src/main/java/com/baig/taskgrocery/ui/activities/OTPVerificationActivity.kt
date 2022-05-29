@@ -1,7 +1,6 @@
 package com.baig.taskgrocery.ui.activities
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.baig.taskgrocery.R
@@ -19,7 +18,7 @@ class OTPVerificationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_otpverification)
-        phoneNoVerification = PhoneNoVerification(this)
+        phoneNoVerification = PhoneNoVerification(this, this)
         firebaseAuth = FirebaseAuth.getInstance()
 
         sendUserVerificationCode()
@@ -28,7 +27,6 @@ class OTPVerificationActivity : AppCompatActivity() {
 
     private fun sendUserVerificationCode() {
         val phoneNo = intent.getStringExtra(PHONE_NO) ?: return
-        Log.d("TESTTAG", "Phone = $phoneNo")
         phoneNoVerification.sendVerificationCode(phoneNo)
     }
 
