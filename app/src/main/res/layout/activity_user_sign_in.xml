@@ -26,17 +26,34 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="-129dp">
 
-                <ImageView
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shapeableImageView"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@color/white"
                     android:contentDescription="@string/image_description"
-                    android:scaleType="centerCrop"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/user_avatar"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/light_grey" />
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="2dp"
+                    app:tint="@color/grey" />
+
+                <TextView
+                    style="@style/TextAppearance.MaterialComponents.Headline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sign_in"
+                    android:padding="10dp"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -46,45 +63,51 @@
                 android:layout_height="match_parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
 
+                <TextView
+                    android:id="@+id/tvCountryCode"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="55dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/country_code_tv_background"
+                    android:gravity="center"
+                    android:text="@string/country_code"
+                    app:layout_constraintBottom_toBottomOf="@+id/textInputLayout3"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayout3"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    android:layout_width="300dp"
+                    android:layout_width="240dp"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_phone_number"
-                    app:boxStrokeColor="@color/white"
-                    app:boxStrokeWidthFocused="2dp"
+                    app:boxStrokeColor="@color/green"
                     app:endIconMode="clear_text"
-                    app:endIconTint="@color/white"
-                    app:hintTextColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:endIconTint="@color/black"
+                    app:hintTextColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editTextUserPhoneNo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/number_placeholder"
                         android:inputType="number" />
-
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayout4"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:hint="@string/enter_username"
-                    app:boxStrokeColor="@color/white"
-                    app:boxStrokeWidthFocused="2dp"
+                    app:boxStrokeColor="@color/green"
                     app:endIconMode="clear_text"
-                    app:endIconTint="@color/white"
-                    app:hintTextColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
-                    app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
+                    app:endIconTint="@color/black"
+                    app:hintTextColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -98,16 +121,14 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayout5"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:hint="@string/enter_password"
-                    app:boxStrokeColor="@color/white"
-                    app:boxStrokeWidthFocused="2dp"
+                    app:boxStrokeColor="@color/green"
                     app:endIconMode="password_toggle"
-                    app:endIconTint="@color/white"
-                    app:hintTextColor="@color/white"
+                    app:endIconTint="@color/black"
+                    app:hintTextColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">

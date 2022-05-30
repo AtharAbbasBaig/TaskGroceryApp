@@ -8,8 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenStarted
 import com.baig.taskgrocery.R
-import com.baig.taskgrocery.adapters.ListOneAdapter
-import com.baig.taskgrocery.adapters.ListTwoAdapter
+import com.baig.taskgrocery.adapters.ProductsListOneAdapter
+import com.baig.taskgrocery.adapters.ProductsListTwoAdapter
 import com.baig.taskgrocery.databinding.ActivityMainBinding
 import com.baig.taskgrocery.listeners.ItemClickHandler
 import com.baig.taskgrocery.models.Banners
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity(), ItemClickHandler {
 
     private fun setUpRecyclerViewOne() {
         binding.apply {
-            val adapter = ListOneAdapter()
+            val adapter = ProductsListOneAdapter(this@MainActivity,this@MainActivity)
             groceryListRecyclerView.adapter = adapter
             adapter.submitList(productList)
         }
@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity(), ItemClickHandler {
 
     private fun setUpRecyclerViewTwo() {
         binding.apply {
-            val adapter = ListTwoAdapter(
+            val adapter = ProductsListTwoAdapter(
                 this@MainActivity,
                 this@MainActivity
             )

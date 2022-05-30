@@ -14,11 +14,11 @@ import com.baig.taskgrocery.models.Products
 import com.baig.taskgrocery.utils.loadImage
 import com.baig.taskgrocery.utils.visible
 
-class ListTwoAdapter(
+class ProductsListTwoAdapter(
     private val context: Context,
     private val itemClickHandler: ItemClickHandler
 ) :
-    ListAdapter<Products, ListTwoAdapter.ListTwoViewHolder>(Differentiator) {
+    ListAdapter<Products, ProductsListTwoAdapter.ListTwoViewHolder>(Differentiator) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

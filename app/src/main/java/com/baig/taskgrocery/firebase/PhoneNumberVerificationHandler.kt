@@ -64,7 +64,6 @@ class PhoneNumberVerificationHandler(private val activity: Activity) {
                     val user = task.result?.user
                     if (user != null) {
                         Intent(activity, MainActivity::class.java).apply {
-                            putExtra(IS_USER,true)
                             activity.startActivity(this)
                         }
                     }
@@ -74,9 +73,4 @@ class PhoneNumberVerificationHandler(private val activity: Activity) {
                 }
             }
     }
-
-    companion object{
-        const val IS_USER = "is_user"
-    }
-
 }

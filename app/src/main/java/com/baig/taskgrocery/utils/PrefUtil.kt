@@ -28,7 +28,7 @@ class PrefUtil(private val context: Context?) {
 
     fun getString(key: String?): String? {
         val prefs = context!!.getSharedPreferences(PREFS_NAME, 0)
-        return prefs.getString(key, "null")
+        return prefs.getString(key, "")
     }
 
     fun setBool(key: String?, value: Boolean) {
