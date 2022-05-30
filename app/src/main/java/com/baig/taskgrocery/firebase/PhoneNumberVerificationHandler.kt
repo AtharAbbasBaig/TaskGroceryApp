@@ -1,9 +1,7 @@
 package com.baig.taskgrocery.firebase
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.widget.Toast
 import com.baig.taskgrocery.ui.activities.MainActivity
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -64,16 +62,21 @@ class PhoneNumberVerificationHandler(private val activity: Activity) {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     val user = task.result?.user
-                    Intent(activity, MainActivity::class.java).apply {
-                        activity.startActivity(this)
+                    if (user != null) {
+                        Intent(activity, MainActivity::class.java).apply {
+                            putExtra(IS_USER,true)
+                            activity.startActivity(this)
+                        }
                     }
 
                 } else {
                     // Sign in failed, display a message and update the UI
-                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                    }
                 }
             }
+    }
+
+    companion object{
+        const val IS_USER = "is_user"
     }
 
 }

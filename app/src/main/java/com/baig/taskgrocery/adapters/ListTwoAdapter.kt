@@ -55,8 +55,8 @@ class ListTwoAdapter(
                 itemButtonAddToCart.setOnClickListener {
                     itemButtonAddToCart.visible(false)
                     containerCartAddRemover.visible(true)
-                    itemClickHandler.onItemClick(product, binding.root)
                 }
+                itemClickHandler.onItemClick(product, binding.root)
             } else {
                 "Out Of Stock".also { itemButtonAddToCart.text = it }
                 itemButtonAddToCart.isClickable = false

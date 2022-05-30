@@ -2,6 +2,7 @@ package com.baig.taskgrocery.ui.activities
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
@@ -139,28 +140,36 @@ class MainActivity : AppCompatActivity(), ItemClickHandler {
         root.tvItemCartCount.text = initialCount.toString()
         root.btnAddToCartPlus.setOnClickListener {
             if (initialCount < maxLimit) {
+                root.btnAddToCartMinus.isClickable = true
                 ++cartItemCounter
                 ++initialCount
                 prefUtil.setInt(product.id.toString(), initialCount)
                 setCartItemCount()
                 root.tvItemCartCount.text = initialCount.toString()
             } else {
+                showToast("Maximum Limit Reached")
                 root.btnAddToCartPlus.isClickable = false
                 root.btnAddToCartMinus.isClickable = true
             }
         }
         root.btnAddToCartMinus.setOnClickListener {
             if (initialCount > 0) {
+                root.btnAddToCartPlus.isClickable = true
                 --cartItemCounter
                 --initialCount
                 prefUtil.setInt(product.id.toString(), initialCount)
                 setCartItemCount()
                 root.tvItemCartCount.text = initialCount.toString()
             } else {
+                showToast("Minimum Limit Reached")
                 root.btnAddToCartPlus.isClickable = true
                 root.btnAddToCartMinus.isClickable = false
             }
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     companion object {

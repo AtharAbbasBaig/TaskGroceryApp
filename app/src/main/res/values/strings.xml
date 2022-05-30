@@ -10,7 +10,9 @@
     <string name="add_to_cart">Add To Cart</string>
     <string name="item_price">PKR 250  (5 kg)</string>
     <string name="organic_potatoes">Organic Potatoes</string>
-    <string name="enter_phone_number">Enter Phone No</string>
+    <string name="enter_phone_number">Number</string>
     <string name="verify">Verify</string>
     <string name="default_area_code">+92</string>
+    <string name="country_code">+92</string>
+    <string name="number_placeholder">3xxxxxxxxxx</string>
 </resources>
