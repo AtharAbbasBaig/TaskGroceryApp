@@ -2,6 +2,7 @@ package com.baig.taskgrocery.firebase
 
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import com.baig.taskgrocery.ui.activities.MainActivity
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -27,7 +28,7 @@ class PhoneNumberVerificationHandler(private val activity: Activity) {
                 // Invalid request
             } else
                 if (e is FirebaseTooManyRequestsException) {
-                    // The SMS quota for the project has been exceeded
+                    Log.d("Message", "The SMS quota for the project has been exceeded")
                 }
             // Show a message and update the UI
         }
