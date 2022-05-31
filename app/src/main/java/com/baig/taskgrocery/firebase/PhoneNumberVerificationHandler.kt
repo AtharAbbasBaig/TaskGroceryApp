@@ -25,7 +25,7 @@ class PhoneNumberVerificationHandler(private val activity: Activity) {
 
         override fun onVerificationFailed(e: FirebaseException) {
             if (e is FirebaseAuthInvalidCredentialsException) {
-                // Invalid request
+                // Invalid request sent
             } else
                 if (e is FirebaseTooManyRequestsException) {
                     Log.d("Message", "The SMS quota for the project has been exceeded")
