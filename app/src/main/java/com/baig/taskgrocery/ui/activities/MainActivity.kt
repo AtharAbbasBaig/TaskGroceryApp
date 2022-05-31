@@ -168,6 +168,40 @@ class MainActivity : AppCompatActivity(), ItemClickHandler {
         }
     }
 
+    override fun onItemClickTwo(product: Products, root: View) {
+        val maxLimit = 5
+        var initialCount = prefUtil.getInt("${product.id}id2", 0)
+        root.tvItemCartCount.text = initialCount.toString()
+        root.btnAddToCartPlus.setOnClickListener {
+            if (initialCount < maxLimit) {
+                root.btnAddToCartMinus.isClickable = true
+                ++cartItemCounter
+                ++initialCount
+                prefUtil.setInt("${product.id}id2", initialCount)
+                setCartItemCount()
+                root.tvItemCartCount.text = initialCount.toString()
+            } else {
+                showToast("Maximum Limit Reached")
+                root.btnAddToCartPlus.isClickable = false
+                root.btnAddToCartMinus.isClickable = true
+            }
+        }
+        root.btnAddToCartMinus.setOnClickListener {
+            if (initialCount > 0) {
+                root.btnAddToCartPlus.isClickable = true
+                --cartItemCounter
+                --initialCount
+                prefUtil.setInt("${product.id}id2", initialCount)
+                setCartItemCount()
+                root.tvItemCartCount.text = initialCount.toString()
+            } else {
+                showToast("Minimum Limit Reached")
+                root.btnAddToCartPlus.isClickable = true
+                root.btnAddToCartMinus.isClickable = false
+            }
+        }
+    }
+
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }

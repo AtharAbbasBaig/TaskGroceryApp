@@ -5,4 +5,5 @@ import com.baig.taskgrocery.models.Products
 
 interface ItemClickHandler {
     fun onItemClick(product: Products, root: View)
+    fun onItemClickTwo(product: Products, root: View)
 }
